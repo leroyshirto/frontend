@@ -8,6 +8,7 @@ require("./gather-static.js");
 require("./webpack.js");
 require("./service-worker.js");
 require("./entry-html.js");
+require("./rollup.js");
 
 gulp.task(
   "develop-gallery",
@@ -20,7 +21,7 @@ gulp.task(
     gulp.parallel("gen-icons-json", "build-translations"),
     "copy-static-gallery",
     "gen-index-gallery-dev",
-    "webpack-dev-server-gallery"
+    process.env.ROLLUP ? "rollup-watch-gallery" : "webpack-dev-server-gallery"
   )
 );
 

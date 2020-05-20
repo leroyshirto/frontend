@@ -8,6 +8,7 @@ require("./gather-static.js");
 require("./webpack.js");
 require("./service-worker.js");
 require("./entry-html.js");
+require("./rollup.js");
 
 gulp.task(
   "develop-demo",
@@ -19,7 +20,7 @@ gulp.task(
     "translations-enable-merge-backend",
     gulp.parallel("gen-icons-json", "gen-index-demo-dev", "build-translations"),
     "copy-static-demo",
-    "webpack-dev-server-demo"
+    process.env.ROLLUP ? "rollup-watch-demo" : "webpack-dev-server-demo"
   )
 );
 

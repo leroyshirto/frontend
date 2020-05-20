@@ -6,6 +6,7 @@ require("./clean.js");
 require("./gen-icons-json.js");
 require("./webpack.js");
 require("./compress.js");
+require("./rollup.js");
 
 gulp.task(
   "develop-hassio",
@@ -15,7 +16,7 @@ gulp.task(
     },
     "clean-hassio",
     "gen-icons-json",
-    "webpack-watch-hassio"
+    process.env.ROLLUP ? "rollup-watch-hassio" : "webpack-watch-hassio"
   )
 );
 

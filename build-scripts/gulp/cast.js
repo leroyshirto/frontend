@@ -6,6 +6,7 @@ require("./gather-static.js");
 require("./webpack.js");
 require("./service-worker.js");
 require("./entry-html.js");
+require("./rollup.js");
 
 gulp.task(
   "develop-cast",
@@ -17,7 +18,7 @@ gulp.task(
     "translations-enable-merge-backend",
     gulp.parallel("gen-icons-json", "build-translations"),
     "copy-static-cast",
-    "webpack-dev-server-cast"
+    process.env.ROLLUP ? "rollup-watch-cast" : "webpack-dev-server-cast"
   )
 );
 

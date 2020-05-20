@@ -11,6 +11,7 @@ require("./compress.js");
 require("./webpack.js");
 require("./service-worker.js");
 require("./entry-html.js");
+require("./rollup.js");
 
 gulp.task(
   "develop-app",
@@ -27,7 +28,7 @@ gulp.task(
       "build-translations"
     ),
     "copy-static",
-    "webpack-watch-app"
+    process.env.ROLLUP ? "rollup-watch-app" : "webpack-watch-app"
   )
 );
 
